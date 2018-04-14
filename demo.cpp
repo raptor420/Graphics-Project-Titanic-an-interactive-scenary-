@@ -6,6 +6,10 @@
 
 #include <GL/glut.h>
 
+#define CTRL_COUNT 100
+
+
+
 
 
 
@@ -26,8 +30,32 @@ void handleResize(int w, int h) {
 float _angle = 0.0;
 float _cameraAngle = 0.0;
 float _ang_tri = 0.0;
+void drawsun(){
+    glColor3ub(255,200,0);
+glPushMatrix();
+glTranslatef(0,2.5,0);
+glutSolidSphere(.4,100,100);
+glPopMatrix();
 
+
+
+
+}
 //Draws the 3D scene
+void drawsky(){
+
+glColor3ub(100,100,255);
+glBegin(GL_POLYGON);
+glVertex3f(-5.5,0,-.5);
+glVertex3f(5.5,0,-.5);
+glVertex3f(5.5,4,-.5);
+glVertex3f(-5.5,4,-.5);
+glEnd();
+
+
+
+}
+
 
 void drawmountain(){
     //1st three leftside mountains
@@ -173,7 +201,12 @@ void drawScene() {
 	glRotatef(-_cameraAngle, 0.0, 1.0, 0.0); //Rotate the camera
 	glTranslatef(0.0, 0.0, -7.0); //Move forward 5 units
 //enter code here
+
+drawsun();
+drawsky();
 drawmountain();
+
+	glFlush();
 	glutSwapBuffers();
 }
 
