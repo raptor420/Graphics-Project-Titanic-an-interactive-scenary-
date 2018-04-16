@@ -11,7 +11,7 @@
 
 
 
-
+//OK
 
 //Initializes 3D rendering
 void initRendering() {
